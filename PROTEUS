@@ -1,0 +1,62 @@
+Nome do Projeto: Lampião AntiGato – Sistema de Inibição de Furtos de Energia
+Formato: Proteus 8.x (.pdsprj)
+Módulos:
+  • Módulo Gerador de Ruído:
+      - Arduino Nano
+      - LED indicador (D9)
+      - Saída PWM (D3)
+      - Fonte de 12V
+  • Módulo Filtro LC com Relé:
+      - Arduino Uno
+      - Display LCD 16x2 (pinos 12, 11, 5, 4, 3, 2)
+      - Sensor de corrente (pino A0)
+      - Relé acionado por D7
+      - Alimentação 5V
+
+Obs: Possui conectores de entrada AC e saída AC simuladas com LEDs e resistores para representar as cargas.
+
+
+🔌 Módulo 1 – Gerador de Ruído
+Microcontrolador: Arduino Nano
+Alimentação: 12V via VIN e GND
+
+🧩 Conexões:
+Pino Arduino Nano	Conectado a	Descrição
+D3	Resistor 220Ω → LED PWM	Saída de sinal PWM (gerador ruído)
+D9	Resistor 220Ω → LED DESVIO	Indicador visual de desvio
+GND	GND comum do sistema	Referência
+VIN	Fonte 12V (positivo)	Alimentação do Nano
+🧰 Outros:
+Um borne de 3 vias na saída (PWM, GND, +12V) para ligar ao filtro ou injetar na rede.
+
+Use um dissipador se for usar driver para PWM com carga real (ex: MOSFET externo).
+
+🛡️ Módulo 2 – Filtro LC com Relé
+Microcontrolador: Arduino Uno
+Alimentação: 5V via VCC e GND
+
+🧩 Conexões:
+Pino Arduino Uno	Conectado a	Descrição
+A0	Saída sensor de corrente	Leitura de corrente da rede
+D7	IN do módulo relé	Acionamento do relé
+D12 → D2	LCD RS → D7 (seguindo padrão)	LCD 16x2 ligado nos pinos digitais
+GND	GND comum	Referência para sensores e LCD
+5V	LCD + relé + sensor	Alimentação
+🧰 Outros:
+Conecte o borne de entrada AC no sensor de corrente (ACS712 ou derivado).
+
+O relé deve estar entre o sensor e o medidor, controlando se a energia passa ou não para ele.
+
+Use capacitores e indutores (Filtro LC) no trajeto antes de entrar no medidor.
+
+
+
+┌─────────────────────┐         ┌───────────────────────┐
+│   Arduino Nano      │         │   Arduino Uno         │
+│   (Gerador Ruído)   │         │   (Filtro LC + Relé)  │
+│  [D3]──LED──┐        │         │  [D7]──Relé──┐         │
+│             │        │         │             │         │
+│  [D9]──LED──┘        │         │  [A0]←Sensor ← AC In   │
+│  VIN ← 12V           │         │  LCD (D12-D2)          │
+│  GND                 │         │  5V/GND                │
+└─────────────────────┘         └───────────────────────┘
