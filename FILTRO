@@ -1,0 +1,32 @@
+// Lampião AntiGato - Módulo Filtro LC + Monitoramento
+#include <LiquidCrystal.h>
+
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+int rele = 7;
+int corrente = A0;
+int limite = 700;
+
+void setup() {
+  lcd.begin(16, 2);
+  pinMode(rele, OUTPUT);
+  digitalWrite(rele, HIGH);
+}
+
+void loop() {
+  int leitura = analogRead(corrente);
+  lcd.setCursor(0, 0);
+  lcd.print("Corrente:");
+  lcd.print(leitura);
+
+  if (leitura > limite) {
+    digitalWrite(rele, LOW); // Protege o medidor
+    lcd.setCursor(0, 1);
+    lcd.print("Protegido!     ");
+  } else {
+    digitalWrite(rele, HIGH);
+    lcd.setCursor(0, 1);
+    lcd.print("Normal         ");
+  }
+
+  delay(1000);
+}
