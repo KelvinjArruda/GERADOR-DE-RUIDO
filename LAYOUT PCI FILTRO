@@ -1,0 +1,11 @@
+Placa PCI - Módulo Filtro LC com Relé
+-------------------------------------
+• Fonte de alimentação: 5V
+• Microcontrolador: Arduino Uno
+• Display LCD 16x2 (pinos 12, 11, 5, 4, 3, 2)
+• Entrada de corrente: pino A0
+• Controle do relé: pino D7
+• Proteção por relé com isolamento óptico
+• Bornes de entrada e saída blindados
+• Suporta bitolas de até 2,5 mm²
+• Conectores de 2 vias (Entrada rede / Saída medidor)
