@@ -1,0 +1,17 @@
+// Lampião AntiGato - Módulo Gerador de Ruído
+int ledDesvio = 9;
+int pwmPin = 3;
+int freq = 5000;
+
+void setup() {
+  pinMode(ledDesvio, OUTPUT);
+  pinMode(pwmPin, OUTPUT);
+  analogWrite(pwmPin, 128); // Ruído médio
+}
+
+void loop() {
+  digitalWrite(ledDesvio, HIGH);
+  delay(1000);
+  digitalWrite(ledDesvio, LOW);
+  delay(1000);
+}
