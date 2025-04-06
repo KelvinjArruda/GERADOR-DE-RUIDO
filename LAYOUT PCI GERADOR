@@ -1,0 +1,14 @@
+Placa PCI - Módulo Gerador de Ruído
+-----------------------------------
+• Fonte de alimentação: 12V
+• Microcontrolador: Arduino Nano
+• Canal PWM: pino D3
+• LED indicador de desvio: pino D9
+• Saída de ruído: borne 3 vias (PWM + GND + VCC)
+• Trilha reforçada para 1A
+• Bornes compatíveis: até 1,5 mm²
+• Furação compatível com gabinete de trilho DIN
+
+
+
+
